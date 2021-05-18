@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
     <title>Početna</title>
 </head>
 <body>
-<head> IZABERITE IGRU KOJU ŽELITE </head>
 
-<div id="izborIgre" class="m-5 indexButton">
     
-    <a href="asocijacije.html" id="asocijacijeBtn" class="btn btn-danger btn-block"> ASOCIJACIJE </a>
-    
-    <a href="activity.html" id="activityBtn" class="btn btn-danger btn-block"> ACTIVITY </a>
-</div>
-    
+
+    <div id="mainDiv" class="container d-flex justify-content-center align-items-center ">
+        <div id="igrajAsocijacije" class="indexButton">
+            <h2> Hoćete da igrate asocijacije? </h2>
+            <br>
+            <a href="asocijacije.html" class="btn btn-danger btn-block"> IGRAJ </a>
+        </div>
+    </div>
+
+    <div id="mainDiv" class="container d-flex justify-content-center align-items-center ">
+        <div id="igrajActivity" class="indexButton">
+             <h2> Hoćete da igrate activity? </h2> 
+            <a href="activity.html" class="btn btn-danger btn-block"> IGRAJ </a>
+       </div>
+    </div>
+
 </body>
 </html>
