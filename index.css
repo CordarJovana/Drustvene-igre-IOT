@@ -6,129 +6,126 @@
     border: 2px red solid;
     border-radius: 30px;
   }
-  #mainDiv1 {
-    height: 40vh;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-top: 40px;
-    border: 2px red solid;
-    border-radius: 30px;
-    background-color: white
-  }
 
+#mainDiv1 {
+  height: 40vh;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 40px;
+  border: 2px red solid;
+  border-radius: 30px;
+  background-color: white
+}
 
-  #opis{
-    padding-right: 10px;
-    padding-top: 20px;
-    margin-top: 40px;
-    border: 2px red solid;
-    align-content: center;
-    background-color: white;
-  }
+#opis{
+  padding-right: 10px;
+  padding-top: 20px;
+  margin-top: 40px;
+  border: 2px red solid;
+  align-content: center;
+  background-color: white;
+}
   
-  .indexButton {
-    border: 2px red solid;
-    border-radius: 30px;
-    padding: 17px;
-    justify-content: center;
-    align-content: center;
-  }
+.indexButton {
+  border: 2px red solid;
+  border-radius: 30px;
+  padding: 17px;
+  justify-content: center;
+  align-content: center;
+}
 
-  .btn {
-    border-radius: 20px;
-  }
+.btn {
+  border-radius: 20px;
+}
 
-  .btn:hover {
-    background-color: white; 
-    color: red;
-  }
+.btn:hover {
+  background-color: white; 
+  color: red;
+}
 
-  #podnaslov{
+#podnaslov{
     text-align: center;
-  }
+}
 
-  #unosTima{
-    background-color: #f1e31e;
-    align-items: center;
-    display: grid;
-    grid-row: auto auto auto;
-    justify-content: center;
-  }
+#unosTima{
+  background-color: #f1e31e;
+  align-items: center;
+  display: grid;
+  grid-row: auto auto auto;
+  justify-content: center;
+}
 
-  #podnaslovUnos{
-    text-align: center;
-    color: red;
-    font-size: larger;
-  }
+#podnaslovUnos{
+  text-align: center;
+  color: red;
+  font-size: larger;
+}
 
-  #tim, #igrac1, #igrac2{
-    margin-top: 5px;
-    border: 2px red solid;
-    background-color: white;
-    border-radius: 30px;
-    padding: 17px;
-    text-align: center;
-    font-size: larger;
-  }
+#tim, #igrac1, #igrac2{
+  margin-top: 5px;
+  border: 2px red solid;
+  background-color: white;
+  border-radius: 30px;
+  padding: 17px;
+  text-align: center;
+  font-size: larger;
+}
 
-  #sacuvajTimBtn{
-    border: 2px  rgb(226, 41, 41) solid;
-    border-radius: 30px;
-    padding: 17px;
-    text-align: center;
-    background-color: rgb(226, 41, 41);
-    font-size: large;
-    color: white;
-  }
+#sacuvajTimBtn{
+  border: 2px  rgb(226, 41, 41) solid;
+  border-radius: 30px;
+  padding: 17px;
+  text-align: center;
+  background-color: rgb(226, 41, 41);
+  font-size: large;
+  color: white;
+}
 
-  #sacuvajTimBtn:hover {
-    background-color: white; 
-    color: red;
-  }
+#sacuvajTimBtn:hover {
+  background-color: white; 
+  color: red;
+}
 
-  #ivonaPozadina{
-    background-image: url(pozadina.jpeg) !important;
+#ivonaPozadina{
+  background-image: url(pozadina.jpeg) !important;
   background-repeat: no-repeat;
   background-size: cover;
- 
-  }
+}
 
-  #tabela{
-    justify-content: center;
-    align-content: center;
-  }
+#tabela{
+  justify-content: center;
+  align-content: center;
+}
 
-  #zaglavlje{
-    justify-content: center;
-    align-content: center;
-    text-align: center;
-    display: grid;
-  }
+#zaglavlje{
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  display: grid;
+}
 
-  #igrajBtn{
-    border-radius: 30px;
-    padding: 17px;
-    text-align: center;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: large;
-    width: 350px;
-    height: 70px;
-  }
+#igrajBtn{
+  border-radius: 30px;
+  padding: 17px;
+  text-align: center;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: large;
+  width: 350px;
+  height: 70px;
+}
 
-  #igrajBtn:hover {
-    background-color: white; 
-    color: red;
-    border: 3px red solid;
-  }
+#igrajBtn:hover {
+  background-color: white; 
+  color: red;
+  border: 3px red solid;
+}
 
-  #zapocniIgru{
+#zapocniIgru{
   justify-content: center;
   align-content: center;
   display: grid;
   background-color: white;
-  }
-
-
+}
 
 .buttonBack {
   position: sticky;
@@ -143,16 +140,14 @@
   justify-content: center;
 }
 
-
 #krajRunde{
-
   border: 3px rgb(216, 60, 60) solid;
-    border-radius: 30px;
-    background-color: #f1e31e;
-    width: 150px;
-    height: 50px;
-    color: red;
-    font-size: larger;
+  border-radius: 30px;
+  background-color: #f1e31e;
+  width: 150px;
+  height: 50px;
+  color: red;
+  font-size: larger;
 }
 
 #krajRunde:hover {
@@ -213,7 +208,6 @@
   margin-top: 8px;
   margin-bottom: 8px;
   height: 50px;
-
   border: 3px rgb(216, 60, 60) solid;
   border-radius: 30px;
   color: #f1e31e;
