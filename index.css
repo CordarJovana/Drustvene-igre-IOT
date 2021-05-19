@@ -1,45 +1,35 @@
 #mainDiv {
-
     height: 40vh;
     padding-left: 20px;
     padding-right: 20px;
     margin-top: 40px;
     border: 2px red solid;
     border-radius: 30px;
-
   }
 
   #opis{
-
     padding-right: 10px;
     padding-top: 20px;
     margin-top: 40px;
     border: 2px red solid;
     align-content: center;
-    
-
   }
   
   .indexButton {
-
     border: 2px red solid;
     border-radius: 30px;
     padding: 17px;
     justify-content: center;
     align-content: center;
-  
   }
 
   .btn {
-
     border-radius: 20px;
-  
   }
 
   .btn:hover {
     background-color: white; 
     color: red;
-    
   }
 
   #podnaslov{
@@ -54,10 +44,10 @@
     grid-row: auto auto auto;
     justify-content: center;
   }
+
   #podnaslovUnos{
     text-align: center;
     color: blue;
-    
   }
 
   #tim, #igrac1, #igrac2{
@@ -83,29 +73,29 @@
   #ivonaPozadina{
     background-color: white;
   }
-#tabela{
-  justify-content: center;
-  align-content: center;
-}
 
-#zaglavlje{
-  justify-content: center;
-  align-content: center;
-  text-align: center;
-  display: grid;
-}
+  #tabela{
+    justify-content: center;
+    align-content: center;
+  }
 
-#igrajBtn{
-  
-  border: 3px red solid;
-  border-radius: 30px;
-  padding: 17px;
-  text-align: center;
-  background-color: greenyellow;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: large;
-  color: red;
-}
+  #zaglavlje{
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    display: grid;
+  }
+
+  #igrajBtn{
+    border: 3px red solid;
+    border-radius: 30px;
+    padding: 17px;
+    text-align: center;
+    background-color: greenyellow;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+    color: red;
+  }
 
 .buttonBack {
   position: sticky;
