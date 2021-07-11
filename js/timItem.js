@@ -4,7 +4,7 @@ export default class TimItem {
         this._imeTima = "";
         this._igrac1 = "";
         this._igrac2 = "";
-        this._brojPoean = "0";
+        this._brojPoean = 0;
     }
 
     //geteri

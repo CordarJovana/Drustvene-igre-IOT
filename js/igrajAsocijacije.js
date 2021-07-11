@@ -1,10 +1,15 @@
 import ListaIgraca from "./listaIgraca.js";
 
 import TimItem from "./timItem.js"; 
+//da li je ok prikljucen AJAX?
+var skripticaAjax = document.createElement("script");
+skripticaAjax.src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js";
+document.getElementsByTagName("head")[0].appendChild(skripticaAjax);
 
 var listaIgraca;
+var daLiJeUcitano = true;
 var brojPapirica = 0;
-var listaKonacno = new ListaIgraca();
+var listaKonacno;
 
 //Pokreni app
 document.addEventListener("readystatechange", (event) => {
@@ -29,25 +34,46 @@ const initApp = () => {
     resetujTajmer.addEventListener("click", (event) => {
         event.preventDefault;
         reset();
+        pokreniIgru();
     });
     // osluskivaci za kraj runde
     const krajRunde1 = document.getElementById("krajRunde1");
     krajRunde1.addEventListener("click", (event) => {
         event.preventDefault;
         startujUnosPodataka();
+        dugmePreracunaj("krajRunde1");
+        
+
     });
-    if(document.getElementById("preracunaj") != null) {
+    const krajRunde2 = document.getElementById("krajRunde2");
+    krajRunde2.addEventListener("click",(event) => {
+        event.preventDefault;
+        startujUnosPodataka();
+        dugmePreracunaj("krajRunde2");
+    });
+    const krajIgre = document.getElementById("krajIgre");
+    krajIgre.addEventListener("click",(event) => {
+        event.preventDefault;
+        startujUnosPodataka();
+        dugmePreracunaj("krajIgre");
+        sortiraj();
+        refreshThePage();
+        proglasiPobednika();
+    });
+    /*if(document.getElementById("preracunaj") != null){
     const unesiPoene = document.getElementById("preracunaj");
     unesiPoene.addEventListener("click", (event) => {
         event.preventDefault();
         //TODO: proveri da li se poklapaju papirici
         apdejtujPoene();
         refreshThePage();
-        });
         
-    }
+        });
+    }*/
+        
+    
     //proceduralni
-    ucitajPodatkeSaLocalStorage();
+    if(listaKonacno == null) {ucitajPodatkeSaLocalStorage();}
     refreshThePage();
     //zapocniIgru();
     
@@ -55,20 +81,25 @@ const initApp = () => {
 
 const ucitajPodatkeSaLocalStorage = () => {
     listaIgraca = JSON.parse(localStorage.getItem("listaIgraca"));
+    listaKonacno = new ListaIgraca();
     for(let i = 0; i < listaIgraca._list.length; i++){
         //console.log(listaIgraca._list[i]);
         let privremeni = new TimItem();
         privremeni.setTim(listaIgraca._list[i]._imeTima);
         privremeni.setIgrac1(listaIgraca._list[i]._igrac1);
         privremeni.setIgrac2(listaIgraca._list[i]._igrac2);
+        //console.log(privremeni);
         listaKonacno.addItemToList(privremeni);
         //console.log(listaKonacno);
     }
     //provera da li je ucitao
    // console.log(listaIgraca);
     brojPapirica = JSON.parse(localStorage.getItem("brojPapirica"));
-    brojPapirica *= listaKonacno.getList().length * 2;
+    brojPapirica = parseInt(brojPapirica);
+    brojPapirica = 2 * brojPapirica * listaKonacno.getList().length;
     console.log(brojPapirica);
+   // window.localStorage.removeItem("listaIgraca");
+    //window.localStorage.removeItem("brojPapirica");
 };
 
 const refreshThePage = () => {
@@ -76,12 +107,22 @@ const refreshThePage = () => {
     renderList();
    
 };
+
+const cleareListDisplay2 = (nazivDugmeta) => {
+    document.querySelector('.bg-model').style.display = "none";
+    const parentElement = document.getElementById("forma-za-unos-poena");
+    deleteContents(parentElement);
+    //disable kraj runde 1 btn
+    disejblujDugme(nazivDugmeta);
+}
 const cleareListDisplay = () => {
     //definisemo parenta
     const parentElement = document.getElementById("timovi_poeni");
     deleteContents(parentElement);
 };
-
+const disejblujDugme = (nazivDugmeta) => {
+    document.getElementById(nazivDugmeta).disabled = true;
+}
 const renderList = () => {
     const list = listaKonacno.getList();
     list.forEach(item => {
@@ -195,14 +236,70 @@ const dodajDugme = () => {
     container.appendChild(dugme);
 }
 //sredi ovo!
-/*const apdejtujPoene = () => {
-    for(let i = 0; i < listaKonacno.getList().length; i++) {
-        const imeTima = listaKonacno.getList()[i].getTim();
-        
-        console.log(imeTima);
-        console.log(document.getElementById(imeTima).value);
-        listaKonacno.getList()[i].updatePoene(document.getElementById(imeTima).value);
-        console.log(listaKonacno.getList()[i]._poeni);
+const apdejtujPoene = () => {
+    for(let i = 0; i < listaKonacno.getList().length; i++){
+        const ime  = listaKonacno.getList()[i].getTim();
+        const vrednost = parseInt(document.getElementById(ime).value);
+        //console.log(document.getElementById(ime).value);
+        listaKonacno.getList()[i].updatePoene(vrednost);
     }
+   refreshThePage();
 };
-  */
+
+const dugmePreracunaj = (nazivDugmeta) => {
+    if(document.getElementById("preracunaj") != null){
+        const unesiPoene = document.getElementById("preracunaj");
+        unesiPoene.addEventListener("click", (event) => {
+            event.preventDefault();
+            //TODO: proveri da li se poklapaju papirici
+            apdejtujPoene();
+            cleareListDisplay2(nazivDugmeta);
+            
+        });
+    }
+    else return;
+            
+}
+const sortiraj = () => {
+    BubbleSort(listaKonacno.getList());
+}
+const BubbleSort = (lista) => {
+    var itemMoved = false;
+    do {
+        itemMoved = false;
+        for(let i = 0; i < lista.length - 1; i++){
+            if(lista[i].getPoeni() < lista[i+1].getPoeni()){
+                var higherValue = lista[i+1];
+                lista[i+1] = lista[i];
+                lista[i] = higherValue;
+                itemMoved = true
+            }
+        }
+    }while(itemMoved)
+
+}
+function pokreniIgru(){
+    //sta je loading
+   // $('#unesiPapirice').button("loading");
+    //promeni IP
+    //ucitati ajax
+    $.get('http://172.20.222.216:8080/pokreniIgru',
+    function(data) {
+        if(data.poruka == "OK"){
+            alert("Prvi tim je na potezu");
+        }
+    } )
+}
+function proglasiPobednika() {
+    //data response da li radi
+    $.ajax({method:"http://172.20.222.216:8080/proglasiPobednika",data:{'data':listaKonacno.getList()[0].getTim()},
+        success:function (data) {
+            if(data.poruka == "OK") alert("Prikazuje Pobednika");
+
+        },
+        error:function (data) {
+            alert("Greska kod prikazivanja pobednika!");
+        }
+})
+}
+//const ubaciMestaUTabelu =() =>

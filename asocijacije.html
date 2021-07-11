@@ -94,4 +94,18 @@
     
 </body>
 </html>
+<script>
+    function pokreniIgru(){
+        //sta je loading
+       // $('#unesiPapirice').button("loading");
+        //promeni IP
+        //ucitati ajax
+        $.get('http://172.20.222.216:8080/pokreniIgru',
+        function(data) {
+            if(data.poruka == "OK"){
+                alert("Sledeci tim je na potezu");
+            }
+        } )
+    }
+</script>
 

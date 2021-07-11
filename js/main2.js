@@ -1,7 +1,6 @@
 import ListaIgraca from "./listaIgraca.js";
 import TimItem from "./timItem.js"; 
 
-
 const listaIgraca = new ListaIgraca();
 var brojPapirica = 0;
 
@@ -23,19 +22,25 @@ const initApp = () => {
         event.preventDefault();
         processSubmission();
     });
-    const sacuvajTimoveNaLokalnuMemoriju = document.getElementById("igrajBtn");
+   /* const sacuvajTimoveNaLokalnuMemoriju = document.getElementById("igrajBtn");
     sacuvajTimoveNaLokalnuMemoriju.addEventListener("click",(event) => {
         event.preventDefault();
         startGame();
-    });
-    const pokreniIgruAsocijacija = document.querySelector(".close");
+    });*/
+    /*const pokreniIgruAsocijacija = document.querySelector(".close");
     pokreniIgruAsocijacija.addEventListener("click", (event) => {
         event.preventDefault();
         
         document.querySelector(".bg-model").style.display = "none";
        
+    });*/
+    const pokreniIgruActivity = document.getElementById("igrajBtnActivity");
+    pokreniIgruActivity.addEventListener("click", (event) => {
+        event.preventDefault;
+        startGameAct();
+
     });
-    const sacuvajPapirice = document.getElementById("unesiPapirice");
+    /*const sacuvajPapirice = document.getElementById("unesiPapirice");
     sacuvajPapirice.addEventListener("click", (event) => {
         event.preventDefault();
         // TODO: provera da li je sve oki
@@ -43,10 +48,7 @@ const initApp = () => {
         //sacuvaj broj papirica
         localStorage.setItem("brojPapirica", JSON.stringify(brojPapirica));
         window.location.replace("igraAsocijacije.html");
-        //mozda nece jer prebacuje
-        pokreniIgru();
-
-    });
+    });*/
     //Procedural
     //load list object
     refreshThePage();
@@ -150,7 +152,15 @@ const startGame = () => {
     otvoriProzorceZaPapirice();
     
 };
+const startGameAct = () => {
+    if(listaIgraca.getList().length < 2) return;
+    localStorage.setItem('listaIgraca', JSON.stringify(listaIgraca));
+    //premestiMe
+    window.location.replace("igraActivity.html");
+    //da li ce da radi zbog prelaza
+    pokreniIgru()
 
+}
 const asocijacijeIgraj = () => {
     
     //otvori prozorce za vreme

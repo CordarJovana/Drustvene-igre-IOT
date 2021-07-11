@@ -1,3 +1,5 @@
+//import TimItem from "./timItem";
+
 export default class ListaIgraca {
     constructor() {
         this._list = [];
