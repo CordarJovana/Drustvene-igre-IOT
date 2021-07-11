@@ -237,6 +237,7 @@ const dodajDugme = () => {
 }
 //sredi ovo!
 const apdejtujPoene = () => {
+   if(!proveraBrojeva()) return false;
     for(let i = 0; i < listaKonacno.getList().length; i++){
         const ime  = listaKonacno.getList()[i].getTim();
         const vrednost = parseInt(document.getElementById(ime).value);
@@ -244,6 +245,7 @@ const apdejtujPoene = () => {
         listaKonacno.getList()[i].updatePoene(vrednost);
     }
    refreshThePage();
+   return true;
 };
 
 const dugmePreracunaj = (nazivDugmeta) => {
@@ -252,7 +254,7 @@ const dugmePreracunaj = (nazivDugmeta) => {
         unesiPoene.addEventListener("click", (event) => {
             event.preventDefault();
             //TODO: proveri da li se poklapaju papirici
-            apdejtujPoene();
+            if(!apdejtujPoene()) return;
             cleareListDisplay2(nazivDugmeta);
             
         });
@@ -301,5 +303,16 @@ function proglasiPobednika() {
             alert("Greska kod prikazivanja pobednika!");
         }
 })
+}
+const proveraBrojeva = () => {
+    var ukupno = 0
+    for(let i = 0; i < listaKonacno.getList().length; i++) {
+        const ime  = listaKonacno.getList()[i].getTim();
+        const vrednostZaProveru = document.getElementById(ime).value;
+        if(Number.isInteger(parseInt(vrednostZaProveru)) == false) {alert("NISTE LEPO UNELI BROJEVE"); return false;}
+        ukupno += parseInt(vrednostZaProveru)
+    }
+    if(ukupno == brojPapirica) return true;
+    else {alert("PAPIRICI SE NE POKLAPAJU"); return false;}
 }
 //const ubaciMestaUTabelu =() =>

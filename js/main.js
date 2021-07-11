@@ -40,6 +40,8 @@ const initApp = () => {
         event.preventDefault();
         // TODO: provera da li je sve oki
         brojPapirica = document.getElementById("brojPapirica").value;
+        if(Number.isInteger(parseInt(brojPapirica)) == false){alert("NISTE LEPO UNELIBROJ!"); return;}
+        if(parseInt(brojPapirica) < 5){alert("Unesite broj koji je veci od 4"); return;}
         //sacuvaj broj papirica
         localStorage.setItem("brojPapirica", JSON.stringify(brojPapirica));
         window.location.replace("igraAsocijacije.html");
